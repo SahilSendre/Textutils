@@ -10,6 +10,9 @@ import { BrowserRouter , Routes, Route, } from 'react-router-dom';
 
 
 function App() {
+  const [state, setState] = useState('active');
+
+
   const [mode, setMode] = useState('light');
 
   const toggleMode = ()=>{
@@ -77,34 +80,37 @@ function App() {
       setAlert(null);
     }, 1500);
    }
-
-
+ 
   return (
     <>
     
     <div>
-        <Navbar title="TEXTUTILS" about="About" home="Home" mode={mode} toggleMode={toggleMode} />
+        <Navbar title="TEXTUTILS" about="About" home="Home" mode={mode} toggleMode={toggleMode} state={state}/>
         {/* changeMode={changeMode} switchMode={switchMode} use this for blue and red mode */}
     </div>
     <div>
      <Alert alert={alert} />
    </div>
-    <div className="container"  >
+    {/* <div className="container"  >
       <Textform heading="Enter the text to analyze here" mode={mode} showAlert={showAlert}/>
-    </div>
+    </div> */}
 
       {/* <BrowserRouter> */}
-        {/* <Routes>
+        <Routes>
             <Route path="/" element={<div className="container"  >
                                       <Textform heading="Enter the text to analyze here" mode={mode} showAlert={showAlert}/>
                                       </div>}/>
             <Route path="/about" element={<About mode={mode} toggleMode={toggleMode}/>}/>                         
                           
-        </Routes> */}
+        </Routes>
+        
+
       {/* </BrowserRouter> */}
     </>
   );
 }
+
+
 
 export default App;
 
